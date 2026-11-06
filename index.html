@@ -1,0 +1,30 @@
+<!doctype html>
+<!-- data-theme define el tema por defecto: "dark" o "light" -->
+<html lang="es" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nahum.dev — Portafolio</title>
+    <meta name="description" content="Portafolio de Nahum SL: proyectos, stack y contacto." />
+    <link rel ="icon" type="image/png" href="/pinguino.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&family=Oswald:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      // Aplica el tema guardado antes de pintar para evitar parpadeos.
+      ;(function () {
+        try {
+          var t = localStorage.getItem('theme')
+          if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t)
+        } catch (e) {}
+      })()
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

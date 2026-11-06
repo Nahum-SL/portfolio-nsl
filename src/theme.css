@@ -1,0 +1,37 @@
+/*
+  TEMA: todos los colores y fuentes del portafolio viven aquí.
+  Para la versión de Administración de Empresas, cambia solo estos valores.
+  El tema por defecto se elige con data-theme en index.html.
+*/
+
+:root {
+  --f-display: 'Oswald', 'Arial Narrow', sans-serif;
+  --f-body: 'Inter', system-ui, sans-serif;
+  --f-mono: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+/* Oscuro: negro + azul + blanco */
+:root,
+[data-theme='dark'] {
+  color-scheme: dark;
+  --bg: #0a0b10;
+  --surface: #11131a;
+  --tech-bg: #eef2fa;
+  --border: #1f2330;
+  --fg: #f3f5fa;
+  --muted: #8d95aa;
+  --accent: #4c8dff;
+  --on-accent: #06101f;
+}
+
+/* Claro */
+[data-theme='light'] {
+  color-scheme: light;
+  --bg: #f7f9fd;
+  --surface: #ffffff;
+  --border: #e1e6f0;
+  --fg: #0b1220;
+  --muted: #5a6479;
+  --accent: #2563eb;
+  --on-accent: #ffffff;
+}
