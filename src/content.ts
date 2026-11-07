@@ -1,4 +1,4 @@
-import type { Highlight, Project, StackGroup } from "./types";
+import type { Certificate, Highlight, Project, StackGroup } from "./types";
 
 /*
   CONTENIDO: todo el texto del portafolio vive aquí (datos de ejemplo).
@@ -27,7 +27,13 @@ export const labels = {
     { href: "#stack", text: "Stack" },
     { href: "#sobre-mi", text: "Sobre mí" },
     { href: "#contacto", text: "Contacto" },
+    { href: "#certificados", text: "Certificados" },
   ],
+  certificatesTitle: "Certificados",
+  certificates: {
+    verify: "Verificar",
+    zoom: "Ampliar",
+  },
   heroPrimary: "Ver proyectos",
   heroCv: "Descargar CV",
   projectsTitle: "Proyectos",
@@ -55,20 +61,28 @@ export const projects: Project[] = [
     id: "asescon",
     title: "Asescon",
     tagline:
-      "Tienda online completa con catálogo, carrito y panel de administración.",
+      "Rediseño de pagina web con panel administrativo",
     category: "Proyecto · Next.js - Nest.JS",
     cover: "/projects/asescon/home-hero-asescon.webp",
     problem:
-      "Un negocio pequeño vendía por mensajería y perdía pedidos por no tener un catálogo ni inventario centralizado.",
+      "La interfaz de la pagina web oficial, no capta a un cliente potencial que necesite asesorarse.",
     role: "Desarrollador full stack: diseño de la base de datos, API, interfaz y despliegue.",
     solution:
-      "Una tienda con catálogo, carrito, checkout y un panel para gestionar productos, stock y pedidos.",
+      "Rediseñar la pagina web con más interaccion para el usuario y retenerlo, ademas de ofrecer herramientas gratuitas conforme a su RUC. Además de elaborar un panel administrativo que permita gestionar su web.",
     impact: [
-      "Pedidos centralizados en un solo panel",
-      "Inventario actualizado en tiempo real",
-      "Carga de página bajo 2 segundos",
+      "Gestion de las paginas web en tiempo real",
+      "Rapidez de la web bajo 2 segundos",
+      "Mayor interacción con el usuario navegador",
     ],
-    stack: ["nextjs", "typescript", "tailwind", "prisma", "postgresql", "nestjs"],
+    stack: [
+      "nextjs",
+      "typescript",
+      "react",
+      "tailwind",
+      "prisma",
+      "postgresql",
+      "nestjs",
+    ],
     gallery: [
       {
         src: "/projects/asescon/placeholder.svg",
@@ -218,28 +232,156 @@ export const projects: Project[] = [
     ],
   },
   {
-    id: "nextstore",
-    title: "NextStore — E-commerce",
+    id: "systemInventoryQr",
+    title: "Sistema de Inventario con QRs",
     tagline:
       "Tienda online completa con catálogo, carrito y panel de administración.",
-    category: "Proyecto · Next.js",
-    cover: "/projects/nextstore.svg",
-    problem:
-      "Un negocio pequeño vendía por mensajería y perdía pedidos por no tener un catálogo ni inventario centralizado.",
+    category: "Proyecto · Express - Vite",
+    cover: "/projects/sysqr/dashboard-admin.webp",
+    problem: `
+        Actualmente, la empresa presenta dificultades para administrar y controlar sus activos, 
+        entre ellos computadoras, laptops, impresoras, equipos tecnológicos, máquinas y mobiliario. 
+        La ausencia de un registro centralizado dificulta conocer con precisión su cantidad, ubicación, 
+        condición y responsable asignado
+      `,
     role: "Desarrollador full stack: diseño de la base de datos, API, interfaz y despliegue.",
     solution:
-      "Una tienda con catálogo, carrito, checkout y un panel para gestionar productos, stock y pedidos.",
+    `Actualmente, la empresa presenta dificultades para administrar y 
+    controlar sus activos, entre ellos computadoras, laptops, impresoras, 
+    equipos tecnológicos, máquinas y mobiliario. La ausencia de un registro 
+    centralizado dificulta conocer con precisión su cantidad, ubicación, condición y 
+    responsable asignado`,
     impact: [
-      "Pedidos centralizados en un solo panel",
       "Inventario actualizado en tiempo real",
-      "Carga de página bajo 2 segundos",
+      "Exportar lista del inventario y hoja de vida del activo en PDF",
+      "Rapidez de la pagina web",
     ],
-    stack: ["nextjs", "typescript", "prisma", "postgresql", "tailwind"],
+    stack: [
+      "express",
+      "knex",
+      "typescript",
+      "mysql",
+      "vite",
+      "react",
+      "tailwind",
+    ],
     gallery: [
       { src: "/projects/placeholder.svg", alt: "Catálogo de productos" },
       { src: "/projects/placeholder.svg", alt: "Panel de administración" },
     ],
-    evidence: [],
+    evidence: [
+      {
+        id: "dashboard",
+        label: "Dashboard",
+        caption:
+          "Panel administrativo con graficas del estado de los activos actuales.",
+        shots: [
+          {
+            src: "/projects/sysqr/dashboard-admin.webp",
+            alt: "Dashboard admin",
+          },
+          {
+            src: "/projects/sysqr/dashboard-barras.webp",
+            alt: "Dashboard grafico de barras con selector",
+          },
+          {
+            src: "/projects/sysqr/dashboard-barras-filtro.webp",
+            alt: "Dashboard grafico de barras con selector",
+          },
+          {
+            src: "/projects/sysqr/dashboard-traslados.webp",
+            alt: "Dahboard ultimos traslados",
+          },
+        ],
+      },
+      {
+        id: "activos",
+        label: "Activos",
+        caption: "Panel para filtrar y listar los activos.",
+        shots: [
+          {
+            src: "/projects/sysqr/activos/activos-lista.webp",
+            alt: "Panel de listar los activos",
+          },
+          {
+            src: "/projects/sysqr/activos/activos-filtro.webp",
+            alt: "Panel de listar activos con filtro ",
+          },
+          {
+            src: "/projects/sysqr/activos/activo-gestion.webp",
+            alt: "Panel del activo para gestionar ",
+          },
+          {
+            src: "/projects/sysqr/activos/hoja-de-vida.webp",
+            alt: "Hoja de vida del activo",
+          },
+          {
+            src: "/projects/sysqr/activos/activos-history.webp",
+            alt: "Historial del activo",
+          },
+          {
+            src: "/projects/sysqr/activos/crear-activo.webp",
+            alt: "Crear nuevo activo",
+          },
+        ],
+      },
+      {
+        id: "reportes",
+        label: "Reportes",
+        caption:
+          "Panel para exportar los activos y su responsable actual | PDF de activos con datos simulados",
+        shots: [
+          {
+            src: "/projects/sysqr/reportes/report-image.webp",
+            alt: "Panel para exportar el inventario",
+          },
+          {
+            src: "/projects/sysqr/reportes/reporte-pdf.webp",
+            alt: "PDF de los activos del inventario",
+          },
+        ],
+      },
+      {
+        id: "etiquetas",
+        label: "Etiquetas QR",
+        caption:
+          "Panel para listar y exportar los QR de los activos en el inventario.",
+        shots: [
+          {
+            src: "/projects/sysqr/etiquetas/etiquetas-image.webp",
+            alt: "Lista de los codigos de los activos",
+          },
+          {
+            src: "/projects/sysqr/etiquetas/etiquetas-filtro.webp",
+            alt: "Seleccionar codigo de los activos del inventario",
+          },
+          {
+            src: "/projects/sysqr/etiquetas/etiquetas-imprimir.webp",
+            alt: "Sección para exportar los QRs del inventario",
+          },
+        ],
+      },
+      {
+        id: "scanner",
+        label: "Usuario Normal",
+        caption:
+          "Panel del scanner para listar y los activos del el inventario.",
+        shots: [
+          {
+            src: "/projects/sysqr/scanner/panel-scanner.webp",
+            alt: "Lista de los codigos de los activos para el usuario",
+          },
+          {
+            src: "/projects/sysqr/scanner/scanner-activo.webp",
+            alt: "Vista del activo 1",
+          },
+          {
+            src: "/projects/sysqr/scanner/scanner-historial.webp",
+            alt: "Vista del activo 2",
+          },
+        ],
+      },
+    ],
   },
 ];
 
@@ -250,14 +392,28 @@ export const stackGroups: StackGroup[] = [
   },
   { title: "Backend", items: ["express", "nestjs", "python", "go"] },
   { title: "Datos", items: ["postgresql", "prisma", "knex", "mysql"] },
-  { title: "Herramientas", items: ["git", "github", "docker","nodejs", "android"] },
+  {
+    title: "Herramientas",
+    items: ["git", "github", "docker", "nodejs", "android"],
+  },
 ];
 
 export const about = {
-  text: "Soy desarrollador full stack. Me importa escribir código claro y entregar productos que funcionan de verdad.",
+  text: "Soy desarrollador full stack. Me importa escribir código claro y entregar productos que resuelvan un problema de verdad.",
   highlights: [
-    { value: "3", label: "Proyectos terminados" },
+    { value: "2", label: "Proyectos terminados" },
     { value: "Full Stack", label: "Del diseño a producción" },
-    { value: "TypeScript", label: "En todo el stack" },
+    { value: "TypeScript", label: "En la mayor parte del stack" },
   ] satisfies Highlight[],
 };
+
+
+export const certificates: Certificate[] = [
+  {
+    id: "aws",
+    title: "AWS Cloud Practitioner Essentials",
+    issuer: "Skill Builder AWS",
+    year: "2026",
+    image: "/certificado-aws.webp",
+  },
+];

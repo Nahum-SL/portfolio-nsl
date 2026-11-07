@@ -57,3 +57,15 @@ export interface Project {
   evidence: EvidenceSection[];
   // ...
 }
+
+export interface Certificate {
+  id: string
+  title: string
+  /** Quién lo emite, ej. "Udemy", "Platzi" */
+  issuer: string
+  year: string
+  /** Imagen del certificado (.webp) */
+  image: string
+  /** Opcional: enlace para verificarlo */
+  url?: string
+}

@@ -8,6 +8,7 @@ import { Hero } from './components/Hero'
 import { Projects } from './components/Projects'
 import { Stack } from './components/Stack'
 import { useTheme } from './hooks/useTheme'
+import { Certificates } from './components/Certificates'
 
 export default function App() {
   const { theme, toggle } = useTheme()
@@ -19,6 +20,7 @@ export default function App() {
         <Hero />
         <Projects />
         <Stack />
+        <Certificates />
         <About />
         <Contact />
       </main>
