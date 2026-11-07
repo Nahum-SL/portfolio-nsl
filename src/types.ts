@@ -61,6 +61,7 @@ export interface Project {
 export interface Certificate {
   id: string
   title: string
+  text?: string;
   /** Quién lo emite, ej. "Udemy", "Platzi" */
   issuer: string
   year: string

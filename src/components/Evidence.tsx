@@ -1,14 +1,28 @@
 import { useCallback, useState } from "react";
-import type { EvidenceSection, Shot } from "../types";
+import { AnimatePresence } from "motion/react";
+import type { EvidenceSection } from "../types";
 import { Lightbox } from "./LightBox";
 
 export function Evidence({ sections }: { sections: EvidenceSection[] }) {
   const [activeId, setActiveId] = useState<string | undefined>(sections[0]?.id);
-  const [zoomed, setZoomed] = useState<Shot | null>(null);
-  const closeZoom = useCallback(() => setZoomed(null), []);
+  const [zoomedIndex, setZoomedIndex] = useState<number | null>(null);
 
   const active = sections.find((s) => s.id === activeId) ?? sections[0];
+  const total = active?.shots.length ?? 0;
+
+  const closeZoom = useCallback(() => setZoomedIndex(null), []);
+  const next = useCallback(
+    () => setZoomedIndex((i) => (i === null ? i : (i + 1) % total)),
+    [total],
+  );
+  const prev = useCallback(
+    () => setZoomedIndex((i) => (i === null ? i : (i - 1 + total) % total)),
+    [total],
+  );
+
   if (!active) return null;
+
+  const zoomed = zoomedIndex !== null ? active.shots[zoomedIndex] : undefined;
 
   return (
     <div>
@@ -47,14 +61,12 @@ export function Evidence({ sections }: { sections: EvidenceSection[] }) {
         className="mt-4"
       >
         <p className="text-muted">{active.caption}</p>
-        <div
-          className={`mt-4 grid gap-3 ${active.shots.length > 1 ? "sm:grid-cols-2" : ""}`}
-        >
+        <div className={`mt-4 grid gap-3 ${total > 1 ? "sm:grid-cols-2" : ""}`}>
           {active.shots.map((shot, i) => (
             <button
               key={`${shot.src}-${i}`}
               type="button"
-              onClick={() => setZoomed(shot)}
+              onClick={() => setZoomedIndex(i)}
               aria-label={`Ampliar: ${shot.alt}`}
               className="group cursor-zoom-in overflow-hidden rounded-xl border border-border focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
             >
@@ -69,7 +81,19 @@ export function Evidence({ sections }: { sections: EvidenceSection[] }) {
         </div>
       </div>
 
-      {zoomed && <Lightbox shot={zoomed} onClose={closeZoom} />}
+      <AnimatePresence>
+        {zoomed && (
+          <Lightbox
+            shot={zoomed}
+            onClose={closeZoom}
+            onPrev={total > 1 ? prev : undefined}
+            onNext={total > 1 ? next : undefined}
+            counter={
+              total > 1 ? `${(zoomedIndex ?? 0) + 1} / ${total}` : undefined
+            }
+          />
+        )}
+      </AnimatePresence>
     </div>
   );
 }

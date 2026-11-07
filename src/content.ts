@@ -14,7 +14,7 @@ export const profile = {
     "Construyo aplicaciones web de punta a punta, del diseño a producción.",
   email: "nahum2006sl@gmail.com",
   github: "https://github.com/Nahum-SL",
-  linkedin: "https://www.linkedin.com/in/tu-usuario",
+  linkedin: "https://www.linkedin.com/in/nahumsl667/",
   /** Pon tu PDF en public/cv.pdf */
   cvUrl: "/cv.pdf",
   cvFileName: "CV-Nahum-SL.pdf",
@@ -33,6 +33,8 @@ export const labels = {
   certificates: {
     verify: "Verificar",
     zoom: "Ampliar",
+    more: "Ver más",
+    less: "Ver menos",
   },
   heroPrimary: "Ver proyectos",
   heroCv: "Descargar CV",
@@ -60,8 +62,7 @@ export const projects: Project[] = [
   {
     id: "asescon",
     title: "Asescon",
-    tagline:
-      "Rediseño de pagina web con panel administrativo",
+    tagline: "Rediseño de pagina web con panel administrativo",
     category: "Proyecto · Next.js - Nest.JS",
     cover: "/projects/asescon/home-hero-asescon.webp",
     problem:
@@ -245,8 +246,7 @@ export const projects: Project[] = [
         condición y responsable asignado
       `,
     role: "Desarrollador full stack: diseño de la base de datos, API, interfaz y despliegue.",
-    solution:
-    `Actualmente, la empresa presenta dificultades para administrar y 
+    solution: `Actualmente, la empresa presenta dificultades para administrar y 
     controlar sus activos, entre ellos computadoras, laptops, impresoras, 
     equipos tecnológicos, máquinas y mobiliario. La ausencia de un registro 
     centralizado dificulta conocer con precisión su cantidad, ubicación, condición y 
@@ -400,18 +400,20 @@ export const stackGroups: StackGroup[] = [
 
 export const about = {
   text: "Soy desarrollador full stack. Me importa escribir código claro y entregar productos que resuelvan un problema de verdad.",
+  status: "Disponible para nuevos proyectos",
   highlights: [
     { value: "2", label: "Proyectos terminados" },
     { value: "Full Stack", label: "Del diseño a producción" },
+    { value: "Dev Ops", label: "En trayectoria" },
     { value: "TypeScript", label: "En la mayor parte del stack" },
   ] satisfies Highlight[],
 };
-
 
 export const certificates: Certificate[] = [
   {
     id: "aws",
     title: "AWS Cloud Practitioner Essentials",
+    text: "Fundamentos de computación en la nube con AWS, incluyendo servicios de almacenamiento, bases de datos, redes, seguridad y gestión de infraestructura. Conocimientos sobre los principales servicios de AWS y sus aplicaciones en soluciones cloud.",
     issuer: "Skill Builder AWS",
     year: "2026",
     image: "/certificado-aws.webp",

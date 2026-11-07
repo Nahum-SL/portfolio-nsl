@@ -1,16 +1,30 @@
+
 import { useEffect, useState } from "react";
 
 export function TypedCode({ text = "</>" }: { text?: string }) {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
-    // Sin animación si el usuario prefiere menos movimiento
+    // Respetar la preferencia de movimiento reducido
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       setCount(text.length);
       return;
     }
-    if (count >= text.length) return;
-    const id = setTimeout(() => setCount((c) => c + 1), 350);
+
+    let id: ReturnType<typeof setTimeout>;
+
+    if (count < text.length) {
+      // Escribir carácter por carácter
+      id = setTimeout(() => {
+        setCount((c) => c + 1);
+      }, 350);
+    } else {
+      // Esperar 6 segundos y reiniciar
+      id = setTimeout(() => {
+        setCount(0);
+      }, 6000);
+    }
+
     return () => clearTimeout(id);
   }, [count, text]);
 
